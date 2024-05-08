@@ -1,5 +1,5 @@
 import axios from "axios";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -27,28 +27,25 @@ async function getWeather() {
   try {
     const cityIdUsingFetch = await cityId();
 
-    const response = await axios
-      .get(
-        `http://api.openweathermap.org/data/2.5/forecast?id=${cityIdUsingFetch}&appid=${apiKey}`
-      )
-      .then((response) => {
-        console.log(response.data.city);
-        // Iterate over each forecast entry
-        response.data.list.forEach((forecast) => {
-          // Extract temperature from the forecast and convert to Celsius
-          const temperatureKelvin = forecast.main.temp;
-          const temperatureCelsius = temperatureKelvin - 273.15;
+    const response = await axios.get(
+      `http://api.openweathermap.org/data/2.5/forecast?id=${cityIdUsingFetch}&appid=${apiKey}`
+    );
 
-          // Extract weather conditions from the forecast
-          const weatherConditions = forecast.weather
-            .map((condition) => condition.main)
-            .join(", ");
+    // Iterate over each forecast entry
+    response.data.list.forEach((forecast) => {
+      // Extract temperature from the forecast and convert to Celsius
+      const temperatureKelvin = forecast.main.temp;
+      const temperatureCelsius = temperatureKelvin - 273.15;
 
-          // Print temperature in Celsius and weather conditions
-          console.log(`Temperature: ${temperatureCelsius.toFixed(2)} °C`);
-          console.log(`Weather Conditions: ${weatherConditions}`);
-        });
-      });
+      // Extract weather conditions from the forecast
+      const weatherConditions = forecast.weather
+        .map((condition) => condition.main)
+        .join(", ");
+
+      // Print temperature in Celsius and weather conditions
+      console.log(`Temperature: ${temperatureCelsius.toFixed(2)} °C`);
+      console.log(`Weather Conditions: ${weatherConditions}`);
+    });
   } catch (error) {
     console.log(error, "Error occured in weather main page");
     return null;
