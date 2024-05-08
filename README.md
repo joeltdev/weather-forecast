@@ -15,6 +15,7 @@ Then, you need to use that API_KEY instead of the 'process.env' part in the code
 Alternatively, you can rename the '.env.example' file to '.env' and add the generated API key there. 
 
 # Run the project 
-To run the project, execute the following command:
+To run the project, execute the following command: \
 npm start
 
+# FrondEnd 
