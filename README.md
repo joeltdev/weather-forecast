@@ -1,6 +1,6 @@
 
 # How to clone repository 
-Use the following command to clone the repository:
+Use the following command to clone the repository: \
 git clone https://github.com/dev-aswinreji/weatherapi.git 
 
 # To build project 
